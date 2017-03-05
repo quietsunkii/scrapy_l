@@ -13,11 +13,6 @@ from scrapy_l.settings import MOVIES,RPC
     # name = scrapy.Field()
 #    pass
 
-class linuxcnItem(scrapy.Item):
-    title = scrapy.Field()
-    link = scrapy.Field()
-    desc = scrapy.Field()
-
 class mediagetItem(scrapy.Item):
 
     title = scrapy.Field()
