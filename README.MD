@@ -12,9 +12,9 @@ MOVIES共有3个参数
 ```
 MOVIES = [
     {
-      'name': r'生活大爆炸第十季/全集Season 10迅雷下载', 
+      'name': '生活大爆炸第十季/全集Season 10迅雷下载', 
       'link': 'http://cn163.net/archives/23809/', 
-      'storge': '/home/cloud/tv/生活大爆炸 (2007)/Season 10/'
+      'storge': '/media/tv/生活大爆炸 (2007)/Season 10/'
      }
 ]
 ```
