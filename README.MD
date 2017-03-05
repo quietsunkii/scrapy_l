@@ -1,4 +1,4 @@
-
+#### 这是学习scrapy的练习，在github上做个备份 ####
 ## 使用方法 ##
 打开scrapy_l/settings.py，填写MOVIES字段及RPC参数。
 
@@ -9,6 +9,7 @@ MOVIES共有3个参数
 
 
 例：
+```
 MOVIES = [
     {
       'name': r'生活大爆炸第十季/全集Season 10迅雷下载', 
@@ -16,3 +17,11 @@ MOVIES = [
       'storge': '/home/cloud/tv/生活大爆炸 (2007)/Season 10/'
      }
 ]
+```
+RPC共有4个参数
+
+
+- address：transmissionrpc的IP
+- port：rpc的端口，默认是9091
+- user：如果设置了认证，填入用户名
+- password：对应用户的密码
