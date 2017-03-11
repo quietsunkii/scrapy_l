@@ -27,12 +27,12 @@ class mediagetPipeline(FilesPipeline):
         # 初始化rpc接口
         tc = transmissionrpc.Client(address=rpc['address'], port=rpc['port'], user=rpc['user'], password=rpc['password'])
         download_dir = item.query_info(item['title'],type='storge')
+        
         for link in item['file_urls']:
             #判断文件是否存在
             if self._check_file(link,download_dir):
                 to = tc.add_torrent(link,download_dir=download_dir)
                 try:
-                    
                     self._download_subtitle(to.name, download_dir)
                 finally:
                     pass
@@ -46,7 +46,7 @@ class mediagetPipeline(FilesPipeline):
         """
         match = 'S\d{2}E\d{2}'
         name = re.findall(match,link)
-        # 获取所有mkv文件
+        # 获取目录下所有文件,并根据SxxExx判断是否存在该剧集
         mkvs = glob.glob(dir + '/' + r'*')
         for n in mkvs:
             if name == re.findall(match,n):
@@ -55,10 +55,10 @@ class mediagetPipeline(FilesPipeline):
 
     #
     def _download_subtitle(self, searchstr, savedir):
-        """
+        """从射手网（伪）下载对应字幕
         :param searchstr: 查找字符串
         :param savedir: 保存的目录
-        :return:
+        :return: 下载是否成功
         """
         head = {
             #'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
@@ -66,30 +66,32 @@ class mediagetPipeline(FilesPipeline):
         }
 
         searchstr = searchstr.replace('[rartv]','[rarbg]')
-        #print(searchstr)
         c = re.search('.*(?=\[rarbg\])', searchstr)
         
         if c:
-            # 默认按热度排序
+            # 第一步，获取字幕列表并默认按热度排序
             search_link = 'http://assrt.net/sub/?searchword=' + c.group() + '&sort=relevance&no_redir=1'
             r = requests.request('GET', search_link, headers=head)
             htree = etree.HTML(r.content)
             short_link = htree.xpath('//div[@class="resultcard"]/div[@class="subitem"]/div/span/a/@href')[0]
 
+            # 第二步，从排名第一的字幕中获取js链接
             search_link = 'http://assrt.net' + short_link
             r = requests.request('GET', search_link, headers=head)
             htree = etree.HTML(r.content)
             link = htree.xpath('//span[@id="detail-filelist"]/div/@onclick')[0]
 
+            # 第三步，将获取的js链接转换成实际链接
             link = re.findall('"(.*?)"', link)
             link.insert(1, '-')
             filedir = savedir + '/' +searchstr
             filename = filedir + '/' + link[-1]
             link = "/".join(list(link))
 
+            # 第四步，下载字幕并保存为文件
             down_link = 'http://assrt.net/download/' + link
             r = requests.get(down_link, stream=True, headers=head)
-
+            # 判断是否存在目录
             if not os.path.exists(filedir):
                 os.mkdir(filedir)
             with open(filename, 'wb') as fd:
