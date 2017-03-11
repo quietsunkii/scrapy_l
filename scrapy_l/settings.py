@@ -28,6 +28,7 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -74,18 +75,22 @@ FILES_URLS_FIELD = 'file_urls'
 FILES_RESULT_FIELD = 'processed_files'
 
 MOVIES = [
-    # 链接：cn163.net  name : 影视的标题；link：影视的链接；storge：本地存储位置
-    {'name': '生活大爆炸第十季/全集Season 10迅雷下载', 'link': 'http://cn163.net/archives/23809/', 'storge': '/media/tv/生活大爆炸 (2007)/Season 10/'},
+    {'name': '生活大爆炸第十季/全集Season 10迅雷下载', 'link': 'http://cn163.net/archives/23809/', 'storge': '/home/cloud/tv/生活大爆炸 (2007)/Season 10'},
+    {'name': '闪电侠第三季/全集Season 3迅雷下载', 'link': 'http://cn163.net/archives/23790/', 'storge': '/home/cloud/tv/The Flash (2014)/Season 3'},
+    {'name': '神盾局特工第四季/全集Agents Of SHIELD迅雷下载', 'link': 'http://cn163.net/archives/23794/', 'storge': '/home/cloud/tv/神盾局特工 (2013)/Season 4'},
+    {'name': '女超人第二季/全集Season 2迅雷下载', 'link': 'http://cn163.net/archives/24016/', 'storge': '/home/cloud/tv/SuperGirl (2016)/Season 2'},
+    {'name': '明日传奇第二季/全集Legends of Tomorrow迅雷下载', 'link': 'http://cn163.net/archives/23814/', 'storge': '/home/cloud/tv/Legends of Tomorrow (2016)/Season 2'},
+    {'name': '维京传奇第四季/全集Vikings迅雷下载', 'link': 'http://cn163.net/archives/19880/', 'storge': '/home/cloud/tv/维京传奇 (2013)/Season 4'},
 ]
 
 RPC = {
-    # transmission rpc 参数，如果有验证，开启user和password参数
-    'address': 'localhost',
+    'address': '10.10.10.10',
     'port': '9091',
-    #'user': 'your rpc user',
-    #'password': 'your rpc password'
+    'user': 'admin',
+    'password': 'sy.sunkii0'
 }
 
+USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.0 Safari/532.5'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
