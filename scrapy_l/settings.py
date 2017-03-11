@@ -75,19 +75,14 @@ FILES_URLS_FIELD = 'file_urls'
 FILES_RESULT_FIELD = 'processed_files'
 
 MOVIES = [
-    {'name': '生活大爆炸第十季/全集Season 10迅雷下载', 'link': 'http://cn163.net/archives/23809/', 'storge': '/home/cloud/tv/生活大爆炸 (2007)/Season 10'},
-    {'name': '闪电侠第三季/全集Season 3迅雷下载', 'link': 'http://cn163.net/archives/23790/', 'storge': '/home/cloud/tv/The Flash (2014)/Season 3'},
-    {'name': '神盾局特工第四季/全集Agents Of SHIELD迅雷下载', 'link': 'http://cn163.net/archives/23794/', 'storge': '/home/cloud/tv/神盾局特工 (2013)/Season 4'},
-    {'name': '女超人第二季/全集Season 2迅雷下载', 'link': 'http://cn163.net/archives/24016/', 'storge': '/home/cloud/tv/SuperGirl (2016)/Season 2'},
-    {'name': '明日传奇第二季/全集Legends of Tomorrow迅雷下载', 'link': 'http://cn163.net/archives/23814/', 'storge': '/home/cloud/tv/Legends of Tomorrow (2016)/Season 2'},
-    {'name': '维京传奇第四季/全集Vikings迅雷下载', 'link': 'http://cn163.net/archives/19880/', 'storge': '/home/cloud/tv/维京传奇 (2013)/Season 4'},
+#    {'name': '生活大爆炸第十季/全集Season 10迅雷下载', 'link': 'http://cn163.net/archives/23809/', 'storge': '/media/tv/生活大爆炸 (2007)/Season 10'},
 ]
 
 RPC = {
-    'address': '10.10.10.10',
+    'address': 'localhost',
     'port': '9091',
-    'user': 'admin',
-    'password': 'sy.sunkii0'
+#    'user': '',
+#    'password': ''
 }
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.0 Safari/532.5'
