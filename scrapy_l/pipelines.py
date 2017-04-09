@@ -85,7 +85,9 @@ class mediagetPipeline(FilesPipeline):
             link = re.findall('"(.*?)"', link)
             link.insert(1, '-')
             filedir = savedir + '/' +searchstr
-            filename = filedir + '/' + link[-1]
+            # 字幕文件扩展名
+            ext = re.search(r'\.[^.\\/:*?"<>|\r\n]+$', link[-1])
+            filename = filedir + '/' + c.group() + ext.group()
             link = "/".join(list(link))
 
             # 第四步，下载字幕并保存为文件
